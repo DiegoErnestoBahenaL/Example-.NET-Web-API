@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<LibrarySystemDbContext>(options =>
+builder.Services.AddDbContext<TaskManagerSystemDbContext>(options =>
 {
     options.UseMySQL(
         builder.Configuration.GetConnectionString("db_conn"), 
@@ -19,8 +19,8 @@ builder.Services.AddDbContext<LibrarySystemDbContext>(options =>
     );
 });
 
-builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 
 var app = builder.Build();
 

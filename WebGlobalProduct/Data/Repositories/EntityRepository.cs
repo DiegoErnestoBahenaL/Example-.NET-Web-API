@@ -4,10 +4,10 @@ namespace WebGlobalProduct.Data.Repositories
 {
     public abstract class EntityRepository<T> : IEntityRepository<T> where T : class
     {
-        protected readonly LibrarySystemDbContext _dbContext;
+        protected readonly TaskManagerSystemDbContext _dbContext;
         private readonly DbSet<T> _collection;
 
-        public EntityRepository(LibrarySystemDbContext dbContext, DbSet<T> collection) 
+        public EntityRepository(TaskManagerSystemDbContext dbContext, DbSet<T> collection) 
         {
             _dbContext = dbContext;
             _collection = collection;
@@ -20,6 +20,10 @@ namespace WebGlobalProduct.Data.Repositories
         public void Add(T entity)
         {
             _collection.Add(entity);
+        }
+        public void Update (T entity)
+        {
+            _collection.Update(entity);
         }
         public void Remove(T entity)
         {
